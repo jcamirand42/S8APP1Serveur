@@ -1,0 +1,14 @@
+C:\Users\jcami\source\repos\APP1\APP1Serveur\bin\Debug\netcoreapp2.1\APP1Serveur.deps.json
+C:\Users\jcami\source\repos\APP1\APP1Serveur\bin\Debug\netcoreapp2.1\APP1Serveur.runtimeconfig.json
+C:\Users\jcami\source\repos\APP1\APP1Serveur\bin\Debug\netcoreapp2.1\APP1Serveur.runtimeconfig.dev.json
+C:\Users\jcami\source\repos\APP1\APP1Serveur\bin\Debug\netcoreapp2.1\APP1Serveur.dll
+C:\Users\jcami\source\repos\APP1\APP1Serveur\bin\Debug\netcoreapp2.1\APP1Serveur.pdb
+C:\Users\jcami\source\repos\APP1\APP1Serveur\obj\Debug\netcoreapp2.1\APP1Serveur.csprojAssemblyReference.cache
+C:\Users\jcami\source\repos\APP1\APP1Serveur\obj\Debug\netcoreapp2.1\APP1Serveur.csproj.CoreCompileInputs.cache
+C:\Users\jcami\source\repos\APP1\APP1Serveur\obj\Debug\netcoreapp2.1\APP1Serveur.RazorAssemblyInfo.cache
+C:\Users\jcami\source\repos\APP1\APP1Serveur\obj\Debug\netcoreapp2.1\APP1Serveur.RazorAssemblyInfo.cs
+C:\Users\jcami\source\repos\APP1\APP1Serveur\obj\Debug\netcoreapp2.1\APP1Serveur.AssemblyInfoInputs.cache
+C:\Users\jcami\source\repos\APP1\APP1Serveur\obj\Debug\netcoreapp2.1\APP1Serveur.AssemblyInfo.cs
+C:\Users\jcami\source\repos\APP1\APP1Serveur\obj\Debug\netcoreapp2.1\APP1Serveur.RazorTargetAssemblyInfo.cache
+C:\Users\jcami\source\repos\APP1\APP1Serveur\obj\Debug\netcoreapp2.1\APP1Serveur.dll
+C:\Users\jcami\source\repos\APP1\APP1Serveur\obj\Debug\netcoreapp2.1\APP1Serveur.pdb
