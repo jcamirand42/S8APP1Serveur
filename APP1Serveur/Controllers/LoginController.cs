@@ -39,15 +39,16 @@ namespace APP1Serveur.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]Login item)
+        public Login Post([FromBody]Login item)
         {
-            repository.Add(item);
+            return repository.Add(item);
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public void Put([FromBody]Login item)
         {
+            repository.Update(item);
         }
 
         // DELETE api/<controller>/5

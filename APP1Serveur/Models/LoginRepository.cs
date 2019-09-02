@@ -12,8 +12,8 @@ namespace APP1Serveur.Models
 
         public LoginRepository()
         {
-            Add(new Login { Username = "admin", Password = "admin" });
-            Add(new Login { Username = "mmpepin", Password = "mmpepin"});
+            Add(new Login { Username = "admin", Password = "admin", Responses = new List<Answers>() });
+            Add(new Login { Username = "mmpepin", Password = "mmpepin", Responses = new List<Answers>() });
         }
 
         public IEnumerable<Login> GetAll()
@@ -36,15 +36,19 @@ namespace APP1Serveur.Models
             int indexUsername = logins.FindIndex(item => item.Username == logInfo.Username);
             int indexPassword = logins.FindIndex(item => item.Password == logInfo.Password);
 
+            Login l = logins.Find(item => (item.Username == logInfo.Username) && (item.Password == logInfo.Password));
+
             if (indexUsername < 0)
             {
                 logInfo.Id = _nextId++;
+                logInfo.Responses = new List<Answers>();
                 logins.Add(logInfo);
                 Console.WriteLine("Login created");
             }
 
             else if (indexUsername == indexPassword)
             {
+                logInfo = l;
                 Console.WriteLine("Login accepted");
             }
 
