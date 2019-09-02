@@ -33,12 +33,19 @@ namespace APP1Serveur.Models
                 throw new ArgumentNullException("item");
             }
 
-            int index = logins.FindIndex(item => item.Username == logInfo.Username);
+            int indexUsername = logins.FindIndex(item => item.Username == logInfo.Username);
+            int indexPassword = logins.FindIndex(item => item.Password == logInfo.Password);
 
-            if (index == 0)
+            if (indexUsername < 0)
             {
                 logInfo.Id = _nextId++;
                 logins.Add(logInfo);
+                Console.WriteLine("Login created");
+            }
+
+            else if (indexUsername == indexPassword)
+            {
+                Console.WriteLine("Login accepted");
             }
 
             return logInfo;
