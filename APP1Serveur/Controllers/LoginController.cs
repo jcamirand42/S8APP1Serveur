@@ -5,13 +5,14 @@ using System.Net;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
-
+using APP1Serveur.Filters;
 
 using APP1Serveur.Models;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace APP1Serveur.Controllers
 {
+    [HMACAuthentication]
     [Route("api/[controller]")]
     public class LoginController : Controller
     {
@@ -42,6 +43,7 @@ namespace APP1Serveur.Controllers
         public void Post([FromBody]Login item)
         {
             repository.Add(item);
+            //return Ok(item);
         }
 
         // PUT api/<controller>/5
