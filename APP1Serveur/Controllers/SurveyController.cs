@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using APP1Serveur.Models;
 
 namespace APP1Serveur.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(Policy = "ApiKeyPolicy")]
     [ApiController]
     public class SurveyController : ControllerBase
     {

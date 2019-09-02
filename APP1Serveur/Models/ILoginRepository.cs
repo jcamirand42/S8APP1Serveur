@@ -10,7 +10,9 @@ namespace APP1Serveur.Models
     {
         IEnumerable<Login> GetAll();
         Login Get(int id);
-        Login Add(Login item);
+        Login GetUserInfo(Login userLog);
+        void Add(Login item);
+        bool CheckIdentity(Login item);
         void Remove(int id);
         bool Update(Login item);
     }

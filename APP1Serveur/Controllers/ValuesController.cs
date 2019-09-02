@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace APP1Serveur.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(Policy = "ApiKeyPolicy")]
     [ApiController]
     public class ValuesController : ControllerBase
     {

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace APP1Serveur.Models
@@ -26,33 +28,62 @@ namespace APP1Serveur.Models
             return logins.Find(p => p.Id == id);
         }
 
-        public Login Add(Login logInfo)
+        public Login GetUserInfo(Login userLog)
+        {
+            Login log = logins.Find(item => (item.Username == userLog.Username) && (item.Password == userLog.Password));
+            return log;
+        }
+
+        public void Add(Login logInfo)
         {
             if (logInfo == null)
             {
-                throw new ArgumentNullException("item");
+                throw new ArgumentNullException("logInfo");
             }
 
             int indexUsername = logins.FindIndex(item => item.Username == logInfo.Username);
             int indexPassword = logins.FindIndex(item => item.Password == logInfo.Password);
 
-            Login l = logins.Find(item => (item.Username == logInfo.Username) && (item.Password == logInfo.Password));
+            
+            Login log = logins.Find(item => (item.Username == logInfo.Username) && (item.Password == logInfo.Password));
 
             if (indexUsername < 0)
-            {
+            {                
                 logInfo.Id = _nextId++;
                 logInfo.Responses = new List<Answers>();
                 logins.Add(logInfo);
                 Console.WriteLine("Login created");
             }
 
-            else if (indexUsername == indexPassword)
+        }
+
+        public bool CheckIdentity(Login logInfo)
+        {
+            if (logInfo == null)
             {
-                logInfo = l;
-                Console.WriteLine("Login accepted");
+                throw new ArgumentNullException("logInfo");
             }
 
-            return logInfo;
+            int indexUsername = logins.FindIndex(item => item.Username == logInfo.Username);
+            int indexPassword = logins.FindIndex(item => item.Password == logInfo.Password);
+
+            //Login log = logins.Find(item => (item.Username == logInfo.Username) && (item.Password == logInfo.Password));
+
+            if (indexUsername < 0)
+            {
+                return false;
+            }
+
+            else if (indexUsername == indexPassword)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+            
         }
 
         public void Remove(int id)
