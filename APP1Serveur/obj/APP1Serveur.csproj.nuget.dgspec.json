@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jcami\\source\\repos\\jcamirand42\\S8APP1Serveur\\APP1Serveur\\APP1Serveur.csproj": {}
+    "C:\\Users\\marie\\OneDrive\\Documents\\S8APP1Serveur\\APP1Serveur\\APP1Serveur.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jcami\\source\\repos\\jcamirand42\\S8APP1Serveur\\APP1Serveur\\APP1Serveur.csproj": {
+    "C:\\Users\\marie\\OneDrive\\Documents\\S8APP1Serveur\\APP1Serveur\\APP1Serveur.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jcami\\source\\repos\\jcamirand42\\S8APP1Serveur\\APP1Serveur\\APP1Serveur.csproj",
+        "projectUniqueName": "C:\\Users\\marie\\OneDrive\\Documents\\S8APP1Serveur\\APP1Serveur\\APP1Serveur.csproj",
         "projectName": "APP1Serveur",
-        "projectPath": "C:\\Users\\jcami\\source\\repos\\jcamirand42\\S8APP1Serveur\\APP1Serveur\\APP1Serveur.csproj",
-        "packagesPath": "C:\\Users\\jcami\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jcami\\source\\repos\\jcamirand42\\S8APP1Serveur\\APP1Serveur\\obj\\",
+        "projectPath": "C:\\Users\\marie\\OneDrive\\Documents\\S8APP1Serveur\\APP1Serveur\\APP1Serveur.csproj",
+        "packagesPath": "C:\\Users\\marie\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marie\\OneDrive\\Documents\\S8APP1Serveur\\APP1Serveur\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\jcami\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\marie\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -56,10 +56,6 @@
               "target": "Package",
               "version": "[2.1.0, )",
               "autoReferenced": true
-            },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
-              "target": "Package",
-              "version": "[2.1.9, )"
             }
           },
           "imports": [
