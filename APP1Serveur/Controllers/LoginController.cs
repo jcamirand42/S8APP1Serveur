@@ -5,7 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Authorization;
 
 using APP1Serveur.Models;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -13,6 +13,7 @@ using APP1Serveur.Models;
 namespace APP1Serveur.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(Policy = "ApiKeyPolicy")]
     public class LoginController : Controller
     {
         static readonly ILoginRepository repository = new LoginRepository();
@@ -20,6 +21,7 @@ namespace APP1Serveur.Controllers
 
         // GET: api/<controller>
         [HttpGet]
+        //[Authorize(Policy = "ApiKeyPolicy")]
         public IEnumerable<Login> GetAllLogin()
         {
             return repository.GetAll();
