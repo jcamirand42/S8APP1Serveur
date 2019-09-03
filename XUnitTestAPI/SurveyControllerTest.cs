@@ -15,7 +15,7 @@ namespace XUnitTestAPI
             _controller = new SurveyController();
         }
         [Fact]
-        public void Test1()
+        public void Get()
         {
             var okResult = _controller.Get();
 
@@ -23,7 +23,7 @@ namespace XUnitTestAPI
             Assert.IsType<List<Survey>>(okResult.Value);
         }
         [Fact]
-        public void Test2()
+        public void GetId()
         {
             var okResult = _controller.Get(1);
 

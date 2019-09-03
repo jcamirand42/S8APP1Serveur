@@ -41,20 +41,38 @@ namespace APP1Serveur.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]Login item)
         {
-            bool isValid = repository.CheckIdentity(item);
-            if (isValid)
+            try
             {
-                Login logInfo = repository.GetUserInfo(item);
-                return Ok(logInfo);
+                if (repository.CheckIdentity(item))
+                {
+                    Login logInfo = repository.GetUserInfo(item);
+                    return Ok(logInfo);
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (ArgumentNullException eNull)
+            {
+                return BadRequest();
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+            
         }
 
         // PUT api/<controller>/5
         [HttpPut]
-        public void Put([FromBody]Login item)
+        public IActionResult Put([FromBody]Login item)
         {
-            repository.Update(item);
+            try
+            {
+                return Ok(repository.Update(item));
+            }
+            catch (ArgumentNullException)
+            {
+                return BadRequest();
+            }
         }
     }
 }

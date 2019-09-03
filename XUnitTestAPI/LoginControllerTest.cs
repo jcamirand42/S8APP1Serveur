@@ -16,35 +16,59 @@ namespace XUnitTestAPI
             _controller = new LoginController();
         }
         [Fact]
-        public void Test1()
+        public void GetAllLogin()
         {
             var result = _controller.GetAllLogin();
 
             Assert.IsType<List<Login>>(result);
         }
         [Fact]
-        public void Test2()
+        public void GetId()
         {
             var result = _controller.Get(1);
 
             Assert.IsType<Login>(result);
         }
         [Fact]
-        public void Test3()
+        public void PostOkResult()
         {
-            var result = _controller.Post(new Login());
+            Login item = _controller.Get(1);
+            var result = _controller.Post(item);
 
-            Assert.IsType<Login>(result);
+            Assert.IsType<OkObjectResult>(result);
         }
         [Fact]
-        public void Test4()
+        public void PostNotFound()
+        {
+            Login item = new Login();
+            var result = _controller.Post(item);
+
+            Assert.IsType<NotFoundResult>(result);
+        }
+        [Fact]
+        public void PostNullLogin()
+        {
+            var result = _controller.Post(null);
+
+            Assert.IsType<BadRequestResult>(result);
+        }
+        [Fact]
+        public void PutOkResult()
         {
             Login item = _controller.Get(1);
             Assert.Equal("admin", item.Username);
             item.Username = "bob";
-            _controller.Put(item);
+            var result = _controller.Put(item);
             item = _controller.Get(1);
             Assert.Equal("bob", item.Username);
+            Assert.IsType<OkObjectResult>(result);
+        }
+        [Fact]
+        public void PutNullLogin()
+        {
+            var result = _controller.Put(null);
+
+            Assert.IsType<BadRequestResult>(result);
         }
 
     }

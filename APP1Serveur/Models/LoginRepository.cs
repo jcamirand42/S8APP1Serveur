@@ -42,10 +42,6 @@ namespace APP1Serveur.Models
             }
 
             int indexUsername = logins.FindIndex(item => item.Username == logInfo.Username);
-            int indexPassword = logins.FindIndex(item => item.Password == logInfo.Password);
-
-            
-            Login log = logins.Find(item => (item.Username == logInfo.Username) && (item.Password == logInfo.Password));
 
             if (indexUsername < 0)
             {                
@@ -66,8 +62,6 @@ namespace APP1Serveur.Models
 
             int indexUsername = logins.FindIndex(item => item.Username == logInfo.Username);
             int indexPassword = logins.FindIndex(item => item.Password == logInfo.Password);
-
-            //Login log = logins.Find(item => (item.Username == logInfo.Username) && (item.Password == logInfo.Password));
 
             if (indexUsername < 0)
             {
