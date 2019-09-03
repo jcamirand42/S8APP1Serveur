@@ -42,10 +42,6 @@ namespace APP1Serveur.Models
 
         public bool CheckIdentity(Login logInfo)
         {
-            if (logInfo == null)
-            {
-                throw new ArgumentNullException("logInfo");
-            }
 
             int indexUsername = logins.FindIndex(item => item.Username == logInfo.Username);
             int indexPassword = logins.FindIndex(item => item.Password == logInfo.Password);

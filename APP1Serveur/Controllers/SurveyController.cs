@@ -10,7 +10,7 @@ using APP1Serveur.Models;
 namespace APP1Serveur.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize(Policy = "ApiKeyPolicy")]
+    
     [ApiController]
     public class SurveyController : ControllerBase
     {
@@ -22,6 +22,7 @@ namespace APP1Serveur.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Policy = "ApiKeyPolicy")]
         public ActionResult<Survey> Get(int id)
         {
             return repository.Get(id);

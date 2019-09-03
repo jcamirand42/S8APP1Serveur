@@ -44,13 +44,16 @@ namespace APP1Serveur.Controllers
         {
             try
             {
+                string decodeUser = "";
+                string decodePass = "";
+
                 Microsoft.Extensions.Primitives.StringValues headerValues;
-                Request.Headers.TryGetValue("Login", out headerValues);
+                headerValues = getHeader();
 
                 string digest = headerValues.ToString();
                 string[] usercode = digest.Split(":");
-                string decodeUser = Base64Decode(usercode[0]);
-                string decodePass = Base64Decode(usercode[1]);
+                decodeUser = Base64Decode(usercode[0]);
+                decodePass = Base64Decode(usercode[1]);
 
                 Login templog = new Login();
                 templog.Username = decodeUser;
@@ -59,13 +62,13 @@ namespace APP1Serveur.Controllers
                 if (repository.CheckIdentity(templog))
                 {
                     Login logInfo = repository.GetUserInfo(templog);
-                    return Ok(logInfo);
+                    return new OkObjectResult(logInfo);
                 }
-                return NotFound();
+                return new NotFoundResult();
             }
             catch (ArgumentNullException eNull)
             {
-                return BadRequest();
+                return new BadRequestResult();
             }
             
         }
@@ -84,14 +87,21 @@ namespace APP1Serveur.Controllers
             try
             {
                 if (repository.Update(item))
-                    return Ok();
+                    return new OkObjectResult(item);
                 else
-                    return BadRequest();
+                    return new BadRequestObjectResult("error");
             }
             catch (ArgumentNullException)
             {
-                return BadRequest();
+                return new BadRequestObjectResult("error");
             }
+        }
+
+        public virtual string getHeader()
+        {
+            Microsoft.Extensions.Primitives.StringValues headerValues;
+            Request.Headers.TryGetValue("Login", out headerValues);
+            return headerValues;
         }
     }
 }

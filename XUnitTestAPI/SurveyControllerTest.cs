@@ -30,5 +30,21 @@ namespace XUnitTestAPI
             // Assert
             Assert.IsType<Survey>(okResult.Value);
         }
+        [Fact]
+        public void GetInexistingId()
+        {
+            var okResult = _controller.Get(3);
+
+            // Assert
+            Assert.Null(okResult.Value);
+        }
+        [Fact]
+        public void GetInvalidId()
+        {
+            var okResult = _controller.Get(-1);
+
+            // Assert
+            Assert.Null(okResult.Value);
+        }
     }
 }
