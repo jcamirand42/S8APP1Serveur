@@ -15,7 +15,6 @@ using APP1Serveur.Models;
 namespace APP1Serveur.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize(Policy = "ApiKeyPolicy")]
     public class LoginController : Controller
     {
         static readonly ILoginRepository repository = new LoginRepository();
@@ -23,6 +22,7 @@ namespace APP1Serveur.Controllers
 
         // GET: api/<controller>
         [HttpGet]
+        [Authorize(Policy = "ApiKeyPolicy")]
         //[Authorize(Policy = "ApiKeyPolicy")]
         public IEnumerable<Login> GetAllLogin()
         {
@@ -30,6 +30,7 @@ namespace APP1Serveur.Controllers
         }
 
         // GET api/<controller>/5
+        [Authorize(Policy = "ApiKeyPolicy")]
         [HttpGet("{id}")]
         public Login Get(int id)
         {
@@ -39,13 +40,25 @@ namespace APP1Serveur.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public IActionResult Post([FromBody]Login item)
+        public IActionResult Post([FromBody]int item)
         {
             try
             {
-                if (repository.CheckIdentity(item))
+                Microsoft.Extensions.Primitives.StringValues headerValues;
+                Request.Headers.TryGetValue("Login", out headerValues);
+
+                string digest = headerValues.ToString();
+                string[] usercode = digest.Split(":");
+                string decodeUser = Base64Decode(usercode[0]);
+                string decodePass = Base64Decode(usercode[1]);
+
+                Login templog = new Login();
+                templog.Username = decodeUser;
+                templog.Password = decodePass;
+
+                if (repository.CheckIdentity(templog))
                 {
-                    Login logInfo = repository.GetUserInfo(item);
+                    Login logInfo = repository.GetUserInfo(templog);
                     return Ok(logInfo);
                 }
                 return NotFound();
@@ -57,8 +70,15 @@ namespace APP1Serveur.Controllers
             
         }
 
+        public static string Base64Decode(string base64EncodedData)
+        {
+            var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
+            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+        }
+
         // PUT api/<controller>/5
         [HttpPut]
+        [Authorize(Policy = "ApiKeyPolicy")]
         public IActionResult Put([FromBody]Login item)
         {
             try
