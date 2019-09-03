@@ -80,11 +80,6 @@ namespace APP1Serveur.Models
             
         }
 
-        public void Remove(int id)
-        {
-            logins.RemoveAll(p => p.Id == id);
-        }
-
         public bool Update(Login item)
         {
             if (item == null)

@@ -46,6 +46,16 @@ namespace XUnitTestAPI
             Assert.IsType<NotFoundResult>(result);
         }
         [Fact]
+        public void PostInvalidPassword()
+        {
+            Login item = new Login();
+            item.Username = "admin";
+            item.Password = "admin1";
+            var result = _controller.Post(item);
+
+            Assert.IsType<NotFoundResult>(result);
+        }
+        [Fact]
         public void PostNullLogin()
         {
             var result = _controller.Post(null);
