@@ -33,50 +33,14 @@ namespace APP1Serveur.Models
 
         public Question Add(Question item)
         {
-            if (item == null)
-            {
-                throw new ArgumentNullException("item");
-            }
-
             item.Id = _nextId++;
             questions.Add(item);
             return item;
         }
 
-        public IEnumerable<Question> GetAll()
-        {
-            return questions;
-        }
-
         public IEnumerable<Question> GetSurveyQuestions(int id)
         {
             return questions.FindAll(p => p.SurveyId == id);
-        }
-
-        public Question Get(int id)
-        {
-            return questions.Find(p => p.Id == id);
-        }
-
-        public void Remove(int id)
-        {
-            questions.RemoveAll(p => p.Id == id);
-        }
-
-        public bool Update(Question item)
-        {
-            if (item == null)
-            {
-                throw new ArgumentNullException("item");
-            }
-            int index = questions.FindIndex(p => p.Id == item.Id);
-            if (index == -1)
-            {
-                return false;
-            }
-            questions.RemoveAt(index);
-            questions.Add(item);
-            return true;
         }
 
     }

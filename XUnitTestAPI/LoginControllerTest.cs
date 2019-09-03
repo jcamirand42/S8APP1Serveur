@@ -71,12 +71,21 @@ namespace XUnitTestAPI
             var result = _controller.Put(item);
             item = _controller.Get(1);
             Assert.Equal("bob", item.Username);
-            Assert.IsType<OkObjectResult>(result);
+            Assert.IsType<OkResult>(result);
         }
         [Fact]
         public void PutNullLogin()
         {
             var result = _controller.Put(null);
+
+            Assert.IsType<BadRequestResult>(result);
+        }
+        [Fact]
+        public void PutNotFound()
+        {
+            Login item = new Login();
+            item.Id = 3;
+            var result = _controller.Put(item);
 
             Assert.IsType<BadRequestResult>(result);
         }

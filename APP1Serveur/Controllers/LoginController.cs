@@ -54,10 +54,6 @@ namespace APP1Serveur.Controllers
             {
                 return BadRequest();
             }
-            catch (Exception e)
-            {
-                return BadRequest();
-            }
             
         }
 
@@ -67,7 +63,10 @@ namespace APP1Serveur.Controllers
         {
             try
             {
-                return Ok(repository.Update(item));
+                if (repository.Update(item))
+                    return Ok();
+                else
+                    return BadRequest();
             }
             catch (ArgumentNullException)
             {

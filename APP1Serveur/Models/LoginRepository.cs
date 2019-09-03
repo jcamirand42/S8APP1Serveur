@@ -35,22 +35,9 @@ namespace APP1Serveur.Models
         }
 
         public void Add(Login logInfo)
-        {
-            if (logInfo == null)
-            {
-                throw new ArgumentNullException("logInfo");
-            }
-
-            int indexUsername = logins.FindIndex(item => item.Username == logInfo.Username);
-
-            if (indexUsername < 0)
-            {                
-                logInfo.Id = _nextId++;
-                logInfo.Responses = new List<Answers>();
-                logins.Add(logInfo);
-                Console.WriteLine("Login created");
-            }
-
+        {        
+            logInfo.Id = _nextId++;
+            logins.Add(logInfo);
         }
 
         public bool CheckIdentity(Login logInfo)

@@ -10,8 +10,6 @@ namespace APP1Serveur.Models
         IEnumerable<Survey> GetAll();
         Survey Get(int id);
         Survey Add(Survey item);
-        void Remove(int id);
-        bool Update(Survey item);
     }
 }
 

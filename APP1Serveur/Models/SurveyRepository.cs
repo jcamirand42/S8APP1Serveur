@@ -19,11 +19,6 @@ namespace APP1Serveur.Models
 
         public Survey Add(Survey item)
         {
-            if (item == null)
-            {
-                throw new ArgumentNullException("item");
-            }
-
             item.Id = _nextId++;
             surveys.Add(item);
             return item;
@@ -37,27 +32,6 @@ namespace APP1Serveur.Models
         public Survey Get(int id)
         {
             return surveys.Find(p => p.Id == id);
-        }
-
-        public void Remove(int id)
-        {
-            surveys.RemoveAll(p => p.Id == id);
-        }
-
-        public bool Update(Survey item)
-        {
-            if (item == null)
-            {
-                throw new ArgumentNullException("item");
-            }
-            int index = surveys.FindIndex(p => p.Id == item.Id);
-            if (index == -1)
-            {
-                return false;
-            }
-            surveys.RemoveAt(index);
-            surveys.Add(item);
-            return true;
         }
     }
 }
